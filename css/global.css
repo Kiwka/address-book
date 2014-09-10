@@ -5,6 +5,7 @@ header, nav, section, article, aside, footer, video {
 body {
 	width: 100%;
 	margin: 0;
+	font-family: Arial, sans-serif;
 }
 
 aside {
@@ -12,21 +13,41 @@ aside {
 	display: inline-block;
 }
 
+.panel__search {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.panel__contacts {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
 .panel__contact {
-	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
 	display: block;
 	width: 100%;
+	border-bottom: 1px gray solid;
 	float: left;
 }
 
-.panel__contact:after {
-	content: clear;
+.panel__contact-active {
+	background-color: #333333;
 }
 
 .panel__image {
-	width: 100px;
-	height: 100px;
+	width: 40px;
+	height: 40px;
 	float: left;
+}
+
+.panel__contact-edit {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #DDDDDD;
+	height: 40px;
+	text-align: center;
 }
 
 .main {
@@ -35,6 +56,4 @@ aside {
 	vertical-align: top;
 }
 
-.add-contact__input {
-	display: block;
-}
+

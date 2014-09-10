@@ -7,6 +7,9 @@
 </head>
 <body ng-controller="BookController as book">
 	<aside ng-controller="PanelController as panel">
+		<form>
+			<input class="panel__search" type="text" placeHolder="Start typing name..."/>
+		</form>
 		<section>
 			<ul>
 				<li ng-class="{active: panel.isSelected(1)}">
@@ -17,22 +20,28 @@
 				</li>
 			</ul>
 		</section>
-		<section>
-			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy:'name' ">
+		<section class="panel__contacts"  >
+			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy:'name'" ng-click="book.selectContact(contact.number)" >
 				<img class="panel__image" ng-src="{{contact.image}}" alt="photo">
 				<p>{{contact.name}}</p>
-				<p>{{contact.phone}}</p>
 			</div>
 			<div ng-show="panel.isSelected(2)" ng-repeat="contact in book.contacts | orderBy:'name' ">
 				<p>{{contact.group}}</p>
 			</div>
 		</section>
+		<section class="panel__contact-edit" ng-show="panel.isSelected(1)">
+			<form action="">
+				<input type="submit" value="Add contact" />
+				<input type="submit" value="Remove contact" />
+			</form>
+		</section>
 	</aside>
 	<main class="main">
 		<section>
 			<h1>{{book.contacts[book.current].name}}</h1>
-			<p>{{book.contacts[book.current].phone}}</p>
-			<p>{{book.contacts[book.current].group}}</p>
+			<p>Phone: {{book.contacts[book.current].phone}}</p>
+			<p>Email: {{book.contacts[book.current].email}}</p>
+			<p ng-show="book.contacts[book.current].group.length">Group: {{book.contacts[book.current].group}}</p>
 			<button ng-hide="book.contacts[book.current].group.length">Add to Group</button>
 		</section>
 		<section class="add-contact">
