@@ -1,0 +1,19 @@
+header, nav, section, article, aside, footer, video {
+	display: block
+}
+
+body {
+	width: 100%;
+	margin: 0;
+}
+
+aside {
+	width: 24%;
+	display: inline-block;
+}
+
+.main {
+	width: 75%;
+	display: inline-block;
+	vertical-align: top;
+}
