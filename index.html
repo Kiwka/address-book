@@ -18,8 +18,8 @@
 			</ul>
 		</section>
 		<section>
-			<div ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy:'name' ">
-				<img ng-src="{{contact.image}}" alt="photo">
+			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy:'name' ">
+				<img class="panel__image" ng-src="{{contact.image}}" alt="photo">
 				<p>{{contact.name}}</p>
 				<p>{{contact.phone}}</p>
 			</div>
@@ -29,10 +29,23 @@
 		</section>
 	</aside>
 	<main class="main">
-		<h1>{{book.contacts[book.current].name}}</h1>
-		<p>{{book.contacts[book.current].phone}}</p>
-		<p>{{book.contacts[book.current].group}}</p>
-		<button ng-hide="book.contacts[book.current].group.length">Add to Group</button>
+		<section>
+			<h1>{{book.contacts[book.current].name}}</h1>
+			<p>{{book.contacts[book.current].phone}}</p>
+			<p>{{book.contacts[book.current].group}}</p>
+			<button ng-hide="book.contacts[book.current].group.length">Add to Group</button>
+		</section>
+		<section class="add-contact">
+			<h1>Add New Contact</h1>
+			<form action="">
+				<ul>
+					<li>Name: <input type="text" placeHolder="Name..."></li>
+					<li>Phone: <input type="text" placeHolder="Phone numder..."></li>
+					<li>Group: <input type="text" placeHolder="Contact group (optional)..."></li>
+				</ul>
+				<input type="submit" value="Add contact" />
+			</form>
+		<section>
 	</main>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>

@@ -12,8 +12,29 @@ aside {
 	display: inline-block;
 }
 
+.panel__contact {
+	margin-bottom: 10px;
+	display: block;
+	width: 100%;
+	float: left;
+}
+
+.panel__contact:after {
+	content: clear;
+}
+
+.panel__image {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
 .main {
 	width: 75%;
 	display: inline-block;
 	vertical-align: top;
+}
+
+.add-contact__input {
+	display: block;
 }
