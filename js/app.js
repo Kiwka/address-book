@@ -50,8 +50,11 @@
 	app.controller('AddContactController', function () {
 		this.contact = {};
 		this.addContact = function () {
+			this.contact.image = 'img/default.png';
+			this.contact.number=allContacts.length;
 			allContacts.push(this.contact);
-		}
+			this.contact = {};
+		};
 	})
 
 })();

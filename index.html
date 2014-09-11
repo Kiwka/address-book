@@ -46,13 +46,12 @@
 		</section>
 		<section class="add-contact">
 			<h1>Add New Contact</h1>
-			<form action="">
-				{{contact.name}}
+			<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && contactCtrl.addContact()" novalidate>
 				<ul>
-					<li>Name: <input ng-model="contact.name" type="text" placeHolder="Name..."></li>
-					<li>Phone: <input ng-model="contact.phone" type="text" placeHolder="Phone numder..."></li>
-					<li>Email: <input ng-model="contact.email" type="text" placeHolder="Phone numder..."></li>
-					<li>Group: <input ng-model="contact.group" type="text" placeHolder="Contact group (optional)..."></li>
+					<li>Name: <input ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
+					<li>Phone: <input ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
+					<li>Email: <input ng-model="contactCtrl.contact.email" type="email" placeHolder="Email..." required></li>
+					<li>Group: <input ng-model="contactCtrl.contact.group" type="text" placeHolder="Contact group (optional)..."></li>
 				</ul>
 				<input type="submit" value="Add contact" />
 			</form>
