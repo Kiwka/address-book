@@ -39,16 +39,11 @@
 	</aside>
 	<main class="main">
 		<section ng-hide="book.isAddContact">
-			<header class="main__header">
-				<img class="main__image" ng-src="{{book.contacts[book.current].image}}" alt=""/>
-				<h1 class="main__name">{{book.contacts[book.current].name}}</h1>
-			</header>
-			<div class="main__info">
-				<p>Phone: {{book.contacts[book.current].phone}}</p>
-				<p>Email: {{book.contacts[book.current].email}}</p>
-				<p ng-show="book.contacts[book.current].group.length">Group: {{book.contacts[book.current].group}}</p>
-				<button ng-hide="book.contacts[book.current].group.length">Add to Group</button>
-			</div>
+			<h1>{{book.contacts[book.current].name}}</h1>
+			<p>Phone: {{book.contacts[book.current].phone}}</p>
+			<p>Email: {{book.contacts[book.current].email}}</p>
+			<p ng-show="book.contacts[book.current].group.length">Group: {{book.contacts[book.current].group}}</p>
+			<button ng-hide="book.contacts[book.current].group.length">Add to Group</button>
 		</section>
 		<section class="add-contact" ng-show="book.isAddContact">
 			<h1>Add New Contact</h1>
