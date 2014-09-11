@@ -22,28 +22,49 @@
 			group: "Family",
 			image: 'img/default.png',
 			number: 2
+		},
+		{
+			name: "Dan Brang",
+			phone: "43335",
+			email: "danbrung@google.com",
+			group: "Family",
+			image: 'img/default.png',
+			number: 3
 		}
+
 	]
 	var app = angular.module ('book', []);
 	
 	app.controller('BookController', function(){
 		this.contacts = allContacts;
 		this.current = 0;
+		
 		this.selectContact = function (setContact) {
 			this.current = setContact;
+			console.log(this.current);
 		};
+		
 		this.isSelected = function (checkContact) {
 			return this.current === checkContact;
 		};
-		/* this.removeContact = function () {
+		
+		this.removeContact = function () {
 			var current = this.current;
-			var index = allContacts.filter(function (obj) {
-				console.log(current);
-  				return obj.number === current;
-			});
+			var index = function () {
+				for (var i=0; i<(allContacts.length+1); i++) {
+					if (allContacts[i].number===current) {
+						return i;
+					}
+				}
+			}();
+			for (i=index; i<allContacts.length; i++) {
+				allContacts[i].number-=1;
+			};
 			console.log(index);
-			allContacts.splice(index[0].numder,1);
-		}; */
+			allContacts.splice(index,1);
+			this.selectContact(allContacts[0].number);
+		};
+		
 		this.isAddContact = false;
 		this.turnAddContact = function (){
 			console.log(this.isAddContact);
