@@ -41,7 +41,6 @@
 		
 		this.selectContact = function (setContact) {
 			this.current = setContact;
-			console.log(this.current);
 		};
 		
 		this.isSelected = function (checkContact) {
@@ -50,17 +49,17 @@
 		
 		this.removeContact = function () {
 			var current = this.current;
+			var length = this.contacts.length;
 			var index = function () {
-				for (var i=0; i<(allContacts.length); i++) {
-					if (allContacts[i].number===this.current) {
+				for (var i=0; i<length; i++) {
+					if (allContacts[i].number===current) {
 						return i;
 					}
 				}
 			}();
 			for (i=index; i<allContacts.length; i++) {
-				allContacts[i].number-=1;
-			};
-			console.log(index);
+				this.contacts[i].number-=1;
+				};
 			allContacts.splice(index,1);
 			this.selectContact(allContacts[0].number);
 		};
