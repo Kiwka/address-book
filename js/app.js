@@ -51,8 +51,8 @@
 		this.removeContact = function () {
 			var current = this.current;
 			var index = function () {
-				for (var i=0; i<(allContacts.length+1); i++) {
-					if (allContacts[i].number===current) {
+				for (var i=0; i<(allContacts.length); i++) {
+					if (allContacts[i].number===this.current) {
 						return i;
 					}
 				}
