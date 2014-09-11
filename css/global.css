@@ -32,8 +32,8 @@ aside {
 	float: left;
 }
 
-.panel__contact-active {
-	background-color: #333333;
+.panel__active {
+	background-color: #BBBBBB;
 }
 
 .panel__image {

@@ -21,7 +21,7 @@
 			</ul>
 		</section>
 		<section class="panel__contacts"  >
-			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy:'name'" ng-click="book.selectContact(contact.number)" >
+			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy:'name'" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
 				<img class="panel__image" ng-src="{{contact.image}}" alt="photo">
 				<p>{{contact.name}}</p>
 			</div>
@@ -47,10 +47,12 @@
 		<section class="add-contact">
 			<h1>Add New Contact</h1>
 			<form action="">
+				{{contact.name}}
 				<ul>
-					<li>Name: <input type="text" placeHolder="Name..."></li>
-					<li>Phone: <input type="text" placeHolder="Phone numder..."></li>
-					<li>Group: <input type="text" placeHolder="Contact group (optional)..."></li>
+					<li>Name: <input ng-model="contact.name" type="text" placeHolder="Name..."></li>
+					<li>Phone: <input ng-model="contact.phone" type="text" placeHolder="Phone numder..."></li>
+					<li>Email: <input ng-model="contact.email" type="text" placeHolder="Phone numder..."></li>
+					<li>Group: <input ng-model="contact.group" type="text" placeHolder="Contact group (optional)..."></li>
 				</ul>
 				<input type="submit" value="Add contact" />
 			</form>

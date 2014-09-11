@@ -32,6 +32,9 @@
 		this.selectContact = function (setContact) {
 			this.current = setContact;
 		};
+		this.isSelected = function (checkContact) {
+			return this.current === checkContact;
+		}
 	});
 	
 	app.controller('PanelController', function(){
@@ -43,5 +46,12 @@
 			return this.tab === checkTab;
 		}
 	});
+
+	app.controller('AddContactController', function () {
+		this.contact = {};
+		this.addContact = function () {
+			allContacts.push(this.contact);
+		}
+	})
 
 })();
