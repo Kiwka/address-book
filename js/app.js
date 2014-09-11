@@ -34,6 +34,20 @@
 		};
 		this.isSelected = function (checkContact) {
 			return this.current === checkContact;
+		};
+		/* this.removeContact = function () {
+			var current = this.current;
+			var index = allContacts.filter(function (obj) {
+				console.log(current);
+  				return obj.number === current;
+			});
+			console.log(index);
+			allContacts.splice(index[0].numder,1);
+		}; */
+		this.isAddContact = false;
+		this.turnAddContact = function (){
+			console.log(this.isAddContact);
+			this.isAddContact = !this.isAddContact;
 		}
 	});
 	
