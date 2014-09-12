@@ -80,7 +80,9 @@
 			inputs[0].value = this.contacts[this.current].name;
 			inputs[1].value = this.contacts[this.current].phone;
 			inputs[2].value = this.contacts[this.current].email;
-			inputs[3].value = this.contacts[this.current].group;
+			if (!((typeof this.contacts[this.current].group)==="undefined")) {
+				inputs[3].value = this.contacts[this.current].group;
+			}
 		};
 
 		this.changeContact = function() {
@@ -88,7 +90,9 @@
 			this.contacts[this.current].name = inputs[0].value;
 			this.contacts[this.current].phone = inputs[1].value;
 			this.contacts[this.current].email = inputs[2].value;
-			this.contacts[this.current].group = inputs[3].value;
+			if (inputs[3].value) {
+				this.contacts[this.current].group = inputs[3].value;
+			}
 			document.getElementsByClassName('add-contact__header')[0].innerHTML="<h1>Add Contact</h1>";
 			this.isEdit = false;
 			for (var i=0; i<4; i++) {

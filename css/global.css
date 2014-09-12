@@ -161,7 +161,20 @@ body {
 
 /*Add contact form styles*/
 .add-contact {
-	margin-left: 20px;
+	width:100%;
+	margin: 0;
+	position: relative;
+	display: block;
+	vertical-align: top;
+}
+
+.add-contact__header {
+	width: 100%;
+	display: block;
+	padding-left: 20px;
+	background: #DDDDDD;
+	height: 50px;
+	line-height: 50px;
 }
 
 .add-contact__fields {
