@@ -67,6 +67,9 @@
 		this.isAddContact = false;
 		this.turnAddContact = function (){
 			this.isAddContact = !this.isAddContact;
+			var inputs = document.getElementsByClassName('add-contact__field');
+			inputs.removeClass
+
 		}
 
 		this.isEdit = false;
@@ -86,7 +89,11 @@
 			this.contacts[this.current].phone = inputs[1].value;
 			this.contacts[this.current].email = inputs[2].value;
 			this.contacts[this.current].group = inputs[3].value;
+			document.getElementsByClassName('add-contact__header')[0].innerHTML="<h1>Add Contact</h1>";
 			this.isEdit = false;
+			for (var i=0; i<4; i++) {
+				inputs[i].value="";
+			}
 		}
 	});
 	

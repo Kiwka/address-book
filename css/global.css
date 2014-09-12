@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?92960854');
+  src: url('../font/fontello.eot?92960854#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?92960854') format('woff'),
+       url('../font/fontello.ttf?92960854') format('truetype'),
+       url('../font/fontello.svg?92960854#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 header, nav, section, article, aside, footer, video {
 	display: block
 }
@@ -133,15 +144,18 @@ body {
 }
 
 .main__info__phone:before {
-	content: "";
+	font-family: fontello;
+	content: "\e800";
 }
 
 .main__info__email:before {
-	content: "";
+	font-family: fontello;
+	content: "\e802";
 }
 
 .main__info__group:before {
-	content: "";
+	font-family: fontello;
+	content: "\e804";
 }
 
 
@@ -164,19 +178,23 @@ body {
 }
 
 .add-contact__name:before {
-	content: "";
+	font-family: fontello;
+	content: "\e803";
 }
 
 .add-contact__phone:before {
-	content: "";
+	font-family: fontello;
+	content: "\e800";
 }
 
 .add-contact__email:before {
-	content: "";
+	font-family: fontello;
+	content: "\e802";
 }
 
 .add-contact__group:before {
-	content: "";
+	font-family: fontello;
+	content: "\e804";
 }
 
 .main .ng-invalid.ng-dirty{
