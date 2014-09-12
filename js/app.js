@@ -66,8 +66,27 @@
 		
 		this.isAddContact = false;
 		this.turnAddContact = function (){
-			console.log(this.isAddContact);
 			this.isAddContact = !this.isAddContact;
+		}
+
+		this.isEdit = false;
+		this.editContact = function() {
+			this.isEdit = true;
+			document.getElementsByClassName('add-contact__header')[0].innerHTML="<h1>Edit Contact</h1>";
+			var inputs = document.getElementsByClassName('add-contact__field');
+			inputs[0].value = this.contacts[this.current].name;
+			inputs[1].value = this.contacts[this.current].phone;
+			inputs[2].value = this.contacts[this.current].email;
+			inputs[3].value = this.contacts[this.current].group;
+		};
+
+		this.changeContact = function() {
+			var inputs = document.getElementsByClassName('add-contact__field');
+			this.contacts[this.current].name = inputs[0].value;
+			this.contacts[this.current].phone = inputs[1].value;
+			this.contacts[this.current].email = inputs[2].value;
+			this.contacts[this.current].group = inputs[3].value;
+			this.isEdit = false;
 		}
 	});
 	

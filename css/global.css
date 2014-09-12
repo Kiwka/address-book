@@ -8,19 +8,33 @@ body {
 	font-family: Arial, sans-serif;
 }
 
-aside {
-	width: 24%;
-	display: inline-block;
-}
-
 
 /*Panel styles*/
+.panel {
+	border-right: 1px black solid;
+	width: 24%;
+	display: inline-block;
+	float: left;
+}
+
 .panel__search {
-	width: 100%;
-	height: 20px;
+	position: relative;
+	width: 99%;
+	height: 30px;
 	line-height: 20px;
 	font-size: 18px;
 	margin-top: 10px;
+	border: 1px black solid;
+}
+
+.panel__header {
+	width: 100%;
+	background-color: #DDDDDD;
+	height: 28px;
+	line-height: 28px;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+	padding-left: 10px;
 }
 
 .panel__contacts {
@@ -86,6 +100,7 @@ aside {
 	width: 75%;
 	display: inline-block;
 	vertical-align: top;
+	float: right;
 }
 
 .main__header {
@@ -117,8 +132,52 @@ aside {
 	margin-left: 20px;
 }
 
-/*Add contact form styles*/
+.main__info__phone:before {
+	content: "";
+}
 
+.main__info__email:before {
+	content: "";
+}
+
+.main__info__group:before {
+	content: "";
+}
+
+
+/*Add contact form styles*/
+.add-contact {
+	margin-left: 20px;
+}
+
+.add-contact__fields {
+	list-style-type: none;
+	line-height: 40px;
+	font-size: 18px;
+}
+
+.add-contact__field {
+	height: 20px;
+	line-height: 20px;
+	border: 1px black solid;
+	border-radius: 3px;
+}
+
+.add-contact__name:before {
+	content: "";
+}
+
+.add-contact__phone:before {
+	content: "";
+}
+
+.add-contact__email:before {
+	content: "";
+}
+
+.add-contact__group:before {
+	content: "";
+}
 
 .main .ng-invalid.ng-dirty{
 	border-color: #FA787E;

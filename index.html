@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/global.css">
-	<title>Adress Book</title>
+	<title>Address Book</title>
 </head>
 <body ng-controller="BookController as book">
-	<aside ng-controller="PanelController as panel">
+	<aside class="panel" ng-controller="PanelController as panel">
 		<form>
 			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..."/>
 		</form>
@@ -20,8 +20,9 @@
 				</li>
 			</ul>
 		</section>
-		<section class="panel__contacts"  >
-			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | filter:searchText" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
+		<section class="panel__contacts">
+			<header class="panel__header">People</header>
+			<div class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy: 'name'| filter:searchText" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
 				<img class="contact__image" ng-src="{{contact.image}}" alt="photo">
 				<div class="contact__info"><p class="contact__name">{{contact.name}}</p>
 				<p class="contact__group">{{contact.group}}</p></div>
@@ -33,6 +34,7 @@
 		<section class="panel__contact-edit" ng-show="panel.isSelected(1)">
 			<form action="">
 				<input type="submit" value="Add contact" ng-click="book.turnAddContact()" ng-hide="book.isAddContact"/>
+				<input type="submit" value="Edit contact" ng-click="book.turnAddContact(); book.editContact()" ng-hide="book.isAddContact"/>
 				<input type="submit" value="Remove contact" ng-click="book.removeContact()"/>
 			</form>
 		</section>
@@ -44,22 +46,25 @@
 				<h1 class="main__name">{{book.contacts[book.current].name}}</h1>
 			</header>
 			<div class="main__info">
-				<p>Phone: {{book.contacts[book.current].phone}}</p>
-				<p>Email: {{book.contacts[book.current].email}}</p>
-				<p ng-show="book.contacts[book.current].group.length">Group: {{book.contacts[book.current].group}}</p>
-				<button ng-hide="book.contacts[book.current].group.length">Add to Group</button>
+				<p class="main__info__phone">Phone: {{book.contacts[book.current].phone}}</p>
+				<p class="main__info__email">Email: {{book.contacts[book.current].email}}</p>
+				<p class="main__info__group" ng-show="book.contacts[book.current].group.length">Group: {{book.contacts[book.current].group}}</p>
+				<button>Edit contact</button>
 			</div>
 		</section>
 		<section class="add-contact" ng-show="book.isAddContact">
-			<h1>Add New Contact</h1>
-			<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && contactCtrl.addContact()" novalidate>
-				<ul>
-					<li>Name: <input ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
-					<li>Phone: <input ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
-					<li>Email: <input ng-model="contactCtrl.contact.email" type="email" placeHolder="Email..." required></li>
-					<li>Group: <input ng-model="contactCtrl.contact.group" type="text" placeHolder="Contact group (optional)..."></li>
+			<header class="add-contact__header">
+				<h1>Add New Contact</h1>
+			</header>
+			<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && book.isEdit && contactCtrl.addContact()" novalidate>
+				<ul class="add-contact__fields">
+					<li class="add-contact__name">Name: <input class="add-contact__field" ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
+					<li class="add-contact__phone">Phone: <input class="add-contact__field" ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
+					<li class="add-contact__email">Email: <input class="add-contact__field" ng-model="contactCtrl.contact.email" type="email" placeHolder="Email..." required></li>
+					<li class="add-contact__group">Group: <input class="add-contact__field" ng-model="contactCtrl.contact.group" type="text" placeHolder="Contact group (optional)..."></li>
 				</ul>
-				<input type="submit" value="Add contact" ng-click="contactForm.$valid && book.turnAddContact()" />
+				<input ng-hide="book.isEdit" type="submit" value="Add contact" ng-click="contactForm.$valid && book.turnAddContact(); contactForm.$valid && book.selectContact(book.contacts.length)" />
+				<input ng-show="book.isEdit" ng-click="contactForm.$valid && book.turnAddContact(); contactForm.$valid && book.changeContact()" type="submit" value="Save contact">
 				<button ng-click="book.turnAddContact()">Cancel</button>
 			</form>
 		<section>
