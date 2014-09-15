@@ -39,7 +39,7 @@
 		this.contacts = allContacts;
 		this.current = 0;
 
-		this.isGroup = function (contact) {
+		this.isGroupinContact = function (contact) {
 			return !!contact.group;
 		}
 		
@@ -105,8 +105,16 @@
 		}
 	});
 	
-	app.controller('PanelController', function(){
-		
+	app.controller('GroupController', function(){
+		this.view = false;
+
+		this.isGroups = function () {
+			return this.view;
+		}; 
+
+		this.setGroups = function () {
+			this.view = !this.view;
+		}
 	});
 
 	app.controller('AddContactController', function () {

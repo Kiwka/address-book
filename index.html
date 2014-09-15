@@ -6,14 +6,14 @@
 	<title>Address Book</title>
 </head>
 <body ng-controller="BookController as book">
-	<aside class="panel" ng-controller="PanelController as panel">
+	<aside class="panel">
 		<form>
 			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..."/>
 		</form>
-		<section>
-			<div class="panel__header">Groups</div>
-			<ul class="panel__groups">
-				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroup(contact)">
+		<section ng-controller="GroupController as groups">
+			<div class="panel__header" ng-click="groups.setGroups()">Groups</div>
+			<ul class="panel__groups" ng-show="groups.isGroups()">
+				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)">
 				{{contact.group}}</li>
 			</ul>
 		</section>

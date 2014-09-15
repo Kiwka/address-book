@@ -37,6 +37,7 @@ body {
 	font-size: 18px;
 	margin-top: 10px;
 	border: 1px black solid;
+	padding-left: 10px;
 }
 
 .panel__header {
@@ -130,6 +131,8 @@ body {
 	height: 60px;
 	line-height: 60px;
 	text-align: center;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
 }
 
 /*Styles of the main part of the adress book*/
