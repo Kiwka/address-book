@@ -38,11 +38,20 @@
 	app.controller('BookController', function(){
 		this.contacts = allContacts;
 		this.current = 0;
+		this.selectedGroup = "";
 
 		this.isGroupinContact = function (contact) {
 			return !!contact.group;
 		}
 		
+		this.setGroup = function (contact) {
+			this.selectedGroup = contact.group;
+		}
+
+		this.noGroup = function () {
+			this.selectedGroup = "";
+		}
+
 		this.selectContact = function (setContact) {
 			this.current = setContact;
 		};

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en" ng-app="book">
 <head>
 	<meta charset="UTF-8">
@@ -11,16 +11,17 @@
 			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..."/>
 		</form>
 		<section ng-controller="GroupController as groups">
-			<div class="panel__header" ng-click="groups.setGroups()">Groups</div>
+			<div class="panel__header" ng-click="groups.setGroups(); book.noGroup()">Groups</div>
 			<ul class="panel__groups" ng-show="groups.isGroups()">
-				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)">
+				<li class="panel__group" ng-click="book.noGroup()">All contacts</li>
+				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)" ng-click="book.setGroup(contact)">
 				{{contact.group}}</li>
 			</ul>
 		</section>
 		<section>
 			<header class="panel__header">People</header>
 			<ul class="panel__contacts">
-				<li class="panel__contact" ng-repeat="contact in book.contacts | orderBy: 'name'| filter:searchText" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
+				<li class="panel__contact" ng-repeat="contact in book.contacts | orderBy: 'name'| filter:searchText | filter: book.selectedGroup" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
 					<img class="contact__image" ng-src="{{contact.image}}" alt="photo">
 					<div class="contact__info"><p class="contact__name">{{contact.name}}</p>
 					<p class="contact__group">{{contact.group}}</p></div>
