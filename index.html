@@ -12,9 +12,9 @@
 		</form>
 		<section ng-controller="GroupController as groups">
 			<div class="panel__header" ng-click="groups.setGroups(); book.noGroup()">Groups</div>
-			<ul class="panel__groups" ng-show="groups.isGroups()">
-				<li class="panel__group" ng-click="book.noGroup()">All contacts</li>
-				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)" ng-click="book.setGroup(contact)">
+			<ul class="panel__groups" ng-show="groups.isGroups() ">
+				<li class="panel__group" ng-click="book.noGroup()" ng-class="{panel__active: book.isGroupSelected('')}">All contacts</li>
+				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)" ng-click="book.setGroup(contact)" ng-class="{panel__active: book.isGroupSelected(contact.group)}" >
 				{{contact.group}}</li>
 			</ul>
 		</section>

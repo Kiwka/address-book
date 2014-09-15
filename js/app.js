@@ -48,6 +48,10 @@
 			this.selectedGroup = contact.group;
 		}
 
+		this.isGroupSelected = function (checkGroup) {
+			return this.selectedGroup === checkGroup;
+		};
+
 		this.noGroup = function () {
 			this.selectedGroup = "";
 		}
