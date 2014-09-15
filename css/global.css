@@ -50,6 +50,26 @@ body {
 	overflow-x: hidden;
 }
 
+.panel__header:after{
+	font-family: fontello;
+	content: "\e801";
+	margin-left: 10px;
+}
+
+.panel__groups {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.panel__group {
+	display: block;
+	border-bottom: 1px black solid;
+	padding-left: 10px;
+	height: 30px;
+	line-height: 30px;
+}
+
 .panel__contacts {
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -103,7 +123,7 @@ body {
 	margin-top: -20px;
 }
 
-.panel__contact-edit {
+.panel__buttons {
 	width: 100%;
 	margin: 0 auto;
 	background-color: #DDDDDD;

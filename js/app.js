@@ -33,11 +33,15 @@
 		}
 
 	]
-	var app = angular.module ('book', []);
+	var app = angular.module ('book', ['ui.directives','ui.filters']);
 	
 	app.controller('BookController', function(){
 		this.contacts = allContacts;
 		this.current = 0;
+
+		this.isGroup = function (contact) {
+			return !!contact.group;
+		}
 		
 		this.selectContact = function (setContact) {
 			this.current = setContact;
@@ -102,13 +106,7 @@
 	});
 	
 	app.controller('PanelController', function(){
-		this.tab=1;
-		this.selectTab = function (setTab) {
-			this.tab = setTab;
-		};
-		this.isSelected = function (checkTab) {
-			return this.tab === checkTab;
-		}
+		
 	});
 
 	app.controller('AddContactController', function () {

@@ -11,29 +11,23 @@
 			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..."/>
 		</form>
 		<section>
-			<ul>
-				<li ng-class="{active: panel.isSelected(1)}">
-					<a href ng-click="panel.selectTab(1)">Persons</a>
-				</li>
-				<li ng-class="{active: panel.isSelected(2)}">
-					<a href ng-click="panel.selectTab(2)">Groups</a>
-				</li>
+			<div class="panel__header">Groups</div>
+			<ul class="panel__groups">
+				<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroup(contact)">
+				{{contact.group}}</li>
 			</ul>
 		</section>
 		<section>
 			<header class="panel__header">People</header>
 			<ul class="panel__contacts">
-				<li class="panel__contact" ng-show="panel.isSelected(1)" ng-repeat="contact in book.contacts | orderBy: 'name'| filter:searchText" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
+				<li class="panel__contact" ng-repeat="contact in book.contacts | orderBy: 'name'| filter:searchText" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
 					<img class="contact__image" ng-src="{{contact.image}}" alt="photo">
 					<div class="contact__info"><p class="contact__name">{{contact.name}}</p>
 					<p class="contact__group">{{contact.group}}</p></div>
 				</li>
 			</ul>
-			<div ng-show="panel.isSelected(2)" ng-repeat="contact in book.contacts | orderBy:'name' ">
-				<p>{{contact.group}}</p>
-			</div>
 		</section>
-		<section class="panel__contact-edit" ng-show="panel.isSelected(1)">
+		<section class="panel__buttons">
 			<form action="">
 				<input type="submit" value="Add contact" ng-click="book.turnAddContact()" ng-hide="book.isAddContact"/>
 				<input type="submit" value="Edit contact" ng-click="book.turnAddContact(); book.editContact()" ng-hide="book.isAddContact"/>
@@ -72,6 +66,7 @@
 		<section>
 	</main>
 	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
