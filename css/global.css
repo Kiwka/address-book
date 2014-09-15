@@ -146,7 +146,21 @@ body {
 }
 
 .main__info {
+	padding: 0;
 	margin-left: 20px;
+	list-style-type: none;
+}
+
+.main__property {
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.main__icon:before {
+	display: inline-block;
+	width: 30px;
 }
 
 .main__info__phone:before {
@@ -189,11 +203,24 @@ body {
 	font-size: 18px;
 }
 
+.add-contact__property {
+	display: inline-block;
+	width: 100px;
+}
+
 .add-contact__field {
 	height: 20px;
 	line-height: 20px;
 	border: 1px black solid;
 	border-radius: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
+	width: 200px;
+}
+
+.add-contact__icon:before {
+	display: inline-block;
+	width: 30px;
 }
 
 .add-contact__name:before {
