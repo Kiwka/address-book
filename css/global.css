@@ -9,6 +9,10 @@
   font-style: normal;
 }
 
+html, body {
+	height: 100%;
+}
+
 header, nav, section, article, aside, footer, video {
 	display: block
 }
@@ -22,12 +26,14 @@ body {
 
 /*Panel styles*/
 .panel {
-	margin-right: -1px;
-	border-right: 1px black solid;
 	width: 25%;
+	border-right: 1px black solid;
+	box-sizing: border-box;
 	display: inline-block;
 	float: left;
 	overflow-x: hidden;
+	height: 100%;
+	position: relative;
 }
 
 .panel__search {
@@ -133,7 +139,8 @@ body {
 	line-height: 60px;
 	text-align: center;
 	border-top: 1px black solid;
-	border-bottom: 1px black solid;
+	position: absolute;
+	bottom: 0px;
 }
 
 /*Styles of the main part of the adress book*/
@@ -151,7 +158,6 @@ body {
 	background-color: #DDDDDD;
 	display: block;
 	height: 140px;
-	border-left: 1px black solid;
 }
 
 .main__image {
@@ -217,7 +223,6 @@ body {
 .add-contact__header {
 	width: 100%;
 	display: block;
-	padding-left: 20px;
 	background: #DDDDDD;
 	height: 50px;
 	line-height: 50px;
