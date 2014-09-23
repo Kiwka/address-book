@@ -266,12 +266,12 @@ body {
 	content: "\e804";
 }
 
-.main .ng-invalid.ng-dirty{
-	border-color: #FA787E;
+.main input.ng-invalid.ng-dirty{
+	background-color: #FA787E;
 }
 
-.main .ng-valid.ng-dirty {
-	border-color: #78FA89;
+.main input.ng-valid.ng-dirty {
+	background-color: #78FA89;
 }
 
 

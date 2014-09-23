@@ -39,7 +39,9 @@
 		this.contacts = allContacts;
 		this.current = 0;
 		this.selectedGroup = "";
+		this.filteredContacts= allContacts;
 
+		//"Group" panel functions
 		this.isGroupinContact = function (contact) {
 			return !!contact.group;
 		}
@@ -63,6 +65,10 @@
 		this.isSelected = function (checkContact) {
 			return this.current === checkContact;
 		};
+
+		this.changeContactsSet = function () {
+			this.current = this.filteredContacts[0].number;
+		}
 		
 		this.removeContact = function () {
 			var current = this.current;
@@ -84,9 +90,6 @@
 		this.isAddContact = false;
 		this.turnAddContact = function (){
 			this.isAddContact = !this.isAddContact;
-			var inputs = document.getElementsByClassName('add-contact__field');
-			inputs.removeClass
-
 		}
 
 		this.isEdit = false;

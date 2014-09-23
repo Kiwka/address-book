@@ -8,7 +8,7 @@
 <body ng-controller="BookController as book">
 	<aside class="panel">
 		<form>
-			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..."/>
+			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..." ng-keyup="book.changeContactsSet()"/>
 		</form>
 		<section ng-controller="GroupController as groups">
 			<div class="panel__header" ng-click="groups.setGroups(); book.noGroup()">Groups</div>
@@ -21,7 +21,7 @@
 		<section>
 			<header class="panel__header">People</header>
 			<ul class="panel__contacts">
-				<li class="panel__contact" ng-repeat="contact in book.contacts | orderBy: 'name'| filter:searchText | filter: book.selectedGroup" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
+				<li class="panel__contact" ng-repeat="contact in (book.filteredContacts = (book.contacts | orderBy: 'name'| filter:searchText | filter: book.selectedGroup))" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
 					<img class="contact__image" ng-src="{{contact.image}}" alt="photo">
 					<div class="contact__info"><p class="contact__name">{{contact.name}}</p>
 					<p class="contact__group">{{contact.group}}</p></div>
@@ -53,7 +53,7 @@
 			<header class="add-contact__header">
 				<h1>Add New Contact</h1>
 			</header>
-			<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact()" novalidate>
+			<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact(); contactForm.$valid && !book.isEdit && contactForm.$setPristine()" novalidate>
 				<ul class="add-contact__fields">
 					<li class="add-contact__icon add-contact__name"><span class="add-contact__property">Name: </span><input class="add-contact__field" ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
 					<li class="add-contact__icon add-contact__phone"><span class="add-contact__property">Phone: </span><input class="add-contact__field" ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
