@@ -30,10 +30,41 @@
 			group: "Family",
 			image: 'img/default.png',
 			number: 3
+		},
+		{
+			name: "Dann Brang",
+			phone: "43335",
+			email: "danbrung@google.com",
+			group: "Family",
+			image: 'img/default.png',
+			number: 4
+		},
+		{
+			name: "Dannn Brang",
+			phone: "43335",
+			email: "danbrung@google.com",
+			group: "Family",
+			image: 'img/default.png',
+			number: 5
+		},
+		{
+			name: "Dannnn Brang",
+			phone: "43335",
+			email: "danbrung@google.com",
+			group: "Family",
+			image: 'img/default.png',
+			number: 6
 		}
 
 	]
 	var app = angular.module ('book', ['ui.directives','ui.filters']);
+
+	app.directive('contactsList', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'tmp/contacts-list.html'
+		};
+	});
 	
 	app.controller('BookController', function(){
 		this.contacts = allContacts;

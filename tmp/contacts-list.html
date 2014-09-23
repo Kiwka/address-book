@@ -1,0 +1,7 @@
+<ul class="panel__contacts">
+	<li class="panel__contact" ng-repeat="contact in (book.filteredContacts = (book.contacts | orderBy: 'name'| filter:searchText | filter: book.selectedGroup))" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
+		<img class="contact__image" ng-src="{{contact.image}}" alt="photo">
+		<div class="contact__info"><p class="contact__name">{{contact.name}}</p>
+		<p class="contact__group">{{contact.group}}</p></div>
+	</li>
+</ul>

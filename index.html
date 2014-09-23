@@ -20,13 +20,7 @@
 		</section>
 		<section>
 			<header class="panel__header">People</header>
-			<ul class="panel__contacts">
-				<li class="panel__contact" ng-repeat="contact in (book.filteredContacts = (book.contacts | orderBy: 'name'| filter:searchText | filter: book.selectedGroup))" ng-click="book.selectContact(contact.number)" ng-class="{panel__active: book.isSelected(contact.number)}" >
-					<img class="contact__image" ng-src="{{contact.image}}" alt="photo">
-					<div class="contact__info"><p class="contact__name">{{contact.name}}</p>
-					<p class="contact__group">{{contact.group}}</p></div>
-				</li>
-			</ul>
+			<contacts-list></contacts-list>
 		</section>
 		<section class="panel__buttons">
 			<form action="">
@@ -50,7 +44,7 @@
 			</ul>
 		</section>
 		<section class="add-contact" ng-show="book.isAddContact">
-			<header class="add-contact__header">
+			<header class="main__header add-contact__header">
 				<h1>Add New Contact</h1>
 			</header>
 			<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact(); contactForm.$valid && !book.isEdit && contactForm.$setPristine()" novalidate>
