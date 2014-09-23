@@ -22,8 +22,9 @@ body {
 
 /*Panel styles*/
 .panel {
+	margin-right: -1px;
 	border-right: 1px black solid;
-	width: 24%;
+	width: 25%;
 	display: inline-block;
 	float: left;
 	overflow-x: hidden;
@@ -137,6 +138,7 @@ body {
 
 /*Styles of the main part of the adress book*/
 .main {
+	margin:0;
 	width: 75%;
 	display: inline-block;
 	vertical-align: top;
@@ -149,6 +151,7 @@ body {
 	background-color: #DDDDDD;
 	display: block;
 	height: 140px;
+	border-left: 1px black solid;
 }
 
 .main__image {
