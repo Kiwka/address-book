@@ -1,0 +1,10 @@
+<header class="main__header">
+	<img class="main__image" ng-src="{{book.contacts[book.current].image}}" alt=""/>
+	<h1 class="main__name">{{book.contacts[book.current].name}}</h1>
+</header>
+<ul class="main__info">
+	<li class="main__info__phone main__icon"><span class="main__property">Phone: </span>{{book.contacts[book.current].phone}}</li>
+	<li class="main__info__email main__icon"><span class="main__property">Email: </span>{{book.contacts[book.current].email}}</li>
+	<li class="main__info__group main__icon" ng-show="book.contacts[book.current].group.length"><span class="main__property">Group: </span>{{book.contacts[book.current].group}}</li>
+	<button ng-click="book.turnAddContact(); book.editContact()">Edit contact</button>
+</ul>

@@ -65,7 +65,28 @@
 			templateUrl: 'tmp/contacts-list.html'
 		};
 	});
+
+	app.directive('groupsList', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'tmp/groups-list.html'
+		};
+	});
+
+	app.directive('contactForm', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'tmp/contact-form.html'
+		};
+	});
 	
+	app.directive('contactView', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'tmp/contact-view.html'
+		};
+	});
+
 	app.controller('BookController', function(){
 		this.contacts = allContacts;
 		this.current = 0;
