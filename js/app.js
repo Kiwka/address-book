@@ -1,63 +1,6 @@
 (function () {
-	var allContacts = [
-		{
-			name: "John Doe",
-			phone: "0567893",
-			email: "johndoe@google.com",
-			group: "Men",
-			image: 'img/default.png',
-			number: 0
-		},
-		{
-			name: "Mary Ann",
-			phone: "567489",
-			email: "maryann@google.com",
-			image: 'img/default.png',
-			number: 1
-		},
-		{
-			name: "Ann Buy",
-			phone: "444455",
-			email: "annbuy@google.com",
-			group: "Family",
-			image: 'img/default.png',
-			number: 2
-		},
-		{
-			name: "Dan Brang",
-			phone: "43335",
-			email: "danbrung@google.com",
-			group: "Family",
-			image: 'img/default.png',
-			number: 3
-		},
-		{
-			name: "Dann Brang",
-			phone: "43335",
-			email: "danbrung@google.com",
-			group: "Family",
-			image: 'img/default.png',
-			number: 4
-		},
-		{
-			name: "Dannn Brang",
-			phone: "43335",
-			email: "danbrung@google.com",
-			group: "Family",
-			image: 'img/default.png',
-			number: 5
-		},
-		{
-			name: "Dannnn Brang",
-			phone: "43335",
-			email: "danbrung@google.com",
-			group: "Family",
-			image: 'img/default.png',
-			number: 6
-		}
-
-	]
 	var app = angular.module ('book', ['ui.directives','ui.filters']);
+	var book;
 
 	app.directive('contactsList', function () {
 		return {
@@ -76,7 +19,17 @@
 	app.directive('contactForm', function () {
 		return {
 			restrict: 'E',
-			templateUrl: 'tmp/contact-form.html'
+			templateUrl: 'tmp/contact-form.html',
+			controller: function () {
+				this.contact = {};
+				this.addContact = function () {
+					this.contact.image = 'img/default.png';
+					this.contact.number=book.contacts.length;
+					book.contacts.push(this.contact);
+					this.contact = {};
+				};
+			},
+			controllerAs: 'contactCtrl'
 		};
 	});
 	
@@ -87,11 +40,15 @@
 		};
 	});
 
-	app.controller('BookController', function(){
-		this.contacts = allContacts;
+	app.controller('BookController', ['$http', function($http){
+		book = this;
+		book.contacts=[];	
 		this.current = 0;
 		this.selectedGroup = "";
-		this.filteredContacts= allContacts;
+		$http.get('contacts/contacts.json').success(function (data) {
+			book.contacts = data;
+		}) ;
+		this.filteredContacts= this.contacts;
 
 		//"Group" panel functions
 		this.isGroupinContact = function (contact) {
@@ -119,7 +76,9 @@
 		};
 
 		this.changeContactsSet = function () {
-			this.current = this.filteredContacts[0].number;
+			if (this.filteredContacts[0]) {
+				this.current = this.filteredContacts[0].number;
+			}
 		}
 		
 		this.removeContact = function () {
@@ -127,16 +86,16 @@
 			var length = this.contacts.length;
 			var index = function () {
 				for (var i=0; i<length; i++) {
-					if (allContacts[i].number===current) {
+					if (book.contacts[i].number===current) {
 						return i;
 					}
 				}
 			}();
-			for (i=index; i<allContacts.length; i++) {
+			for (i=index; i<length; i++) {
 				this.contacts[i].number-=1;
-				};
-			allContacts.splice(index,1);
-			this.selectContact(allContacts[0].number);
+			};
+			book.contacts.splice(index,1);
+			this.selectContact(book.contacts[0].number);
 		};
 		
 		this.isAddContact = false;
@@ -147,8 +106,8 @@
 		this.isEdit = false;
 		this.editContact = function() {
 			this.isEdit = true;
-			document.getElementsByClassName('add-contact__header')[0].innerHTML="<h1>Edit Contact</h1>";
-			var inputs = document.getElementsByClassName('add-contact__field');
+			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Edit Contact</h1>";
+			var inputs = document.getElementsByClassName('contact-form__field');
 			inputs[0].value = this.contacts[this.current].name;
 			inputs[1].value = this.contacts[this.current].phone;
 			inputs[2].value = this.contacts[this.current].email;
@@ -158,20 +117,20 @@
 		};
 
 		this.changeContact = function() {
-			var inputs = document.getElementsByClassName('add-contact__field');
+			var inputs = document.getElementsByClassName('contact-form__field');
 			this.contacts[this.current].name = inputs[0].value;
 			this.contacts[this.current].phone = inputs[1].value;
 			this.contacts[this.current].email = inputs[2].value;
 			if (inputs[3].value) {
 				this.contacts[this.current].group = inputs[3].value;
 			}
-			document.getElementsByClassName('add-contact__header')[0].innerHTML="<h1>Add Contact</h1>";
+			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Add Contact</h1>";
 			this.isEdit = false;
 			for (var i=0; i<4; i++) {
 				inputs[i].value="";
 			}
 		}
-	});
+	}]);
 	
 	app.controller('GroupController', function(){
 		this.view = false;
@@ -184,15 +143,5 @@
 			this.view = !this.view;
 		}
 	});
-
-	app.controller('AddContactController', function () {
-		this.contact = {};
-		this.addContact = function () {
-			this.contact.image = 'img/default.png';
-			this.contact.number=allContacts.length;
-			allContacts.push(this.contact);
-			this.contact = {};
-		};
-	})
 
 })();

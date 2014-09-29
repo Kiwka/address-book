@@ -214,7 +214,7 @@ body {
 
 
 /*Add contact form styles*/
-.add-contact {
+.contact-form {
 	width:100%;
 	margin: 0;
 	position: relative;
@@ -227,18 +227,18 @@ body {
 	line-height: 50px;
 }
 
-.add-contact__fields {
+.contact-form__fields {
 	list-style-type: none;
 	line-height: 40px;
 	font-size: 18px;
 }
 
-.add-contact__property {
+.contact-form__property {
 	display: inline-block;
 	width: 100px;
 }
 
-.add-contact__field {
+.contact-form__field {
 	height: 20px;
 	line-height: 20px;
 	border: 1px black solid;
@@ -248,27 +248,27 @@ body {
 	width: 200px;
 }
 
-.add-contact__icon:before {
+.contact-form__icon:before {
 	display: inline-block;
 	width: 30px;
 }
 
-.add-contact__name:before {
+.contact-form__name:before {
 	font-family: fontello;
 	content: "\e803";
 }
 
-.add-contact__phone:before {
+.contact-form__phone:before {
 	font-family: fontello;
 	content: "\e800";
 }
 
-.add-contact__email:before {
+.contact-form__email:before {
 	font-family: fontello;
 	content: "\e802";
 }
 
-.add-contact__group:before {
+.contact-form__group:before {
 	font-family: fontello;
 	content: "\e804";
 }

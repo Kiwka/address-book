@@ -1,9 +1,9 @@
-<form name="contactForm" action="" ng-controller="AddContactController as contactCtrl" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact(); contactForm.$valid && !book.isEdit && contactForm.$setPristine()" novalidate>
-	<ul class="add-contact__fields">
-		<li class="add-contact__icon add-contact__name"><span class="add-contact__property">Name: </span><input class="add-contact__field" ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
-		<li class="add-contact__icon add-contact__phone"><span class="add-contact__property">Phone: </span><input class="add-contact__field" ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
-		<li class="add-contact__icon add-contact__email"><span class="add-contact__property">Email: </span><input class="add-contact__field" ng-model="contactCtrl.contact.email" type="email" placeHolder="Email..." required></li>
-		<li class="add-contact__icon add-contact__group"><span class="add-contact__property">Group: </span><input class="add-contact__field" ng-model="contactCtrl.contact.group" type="text" placeHolder="Contact group (optional)..."></li>
+<form name="contactForm" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact(); contactForm.$valid && !book.isEdit && contactForm.$setPristine()" novalidate>
+	<ul class="contact-form__fields">
+		<li class="contact-form__icon contact-form__name"><span class="contact-form__property">Name: </span><input class="contact-form__field" ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
+		<li class="contact-form__icon contact-form__phone"><span class="contact-form__property">Phone: </span><input class="contact-form__field" ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
+		<li class="contact-form__icon contact-form__email"><span class="contact-form__property">Email: </span><input class="contact-form__field" ng-model="contactCtrl.contact.email" type="email" placeHolder="Email..." required></li>
+		<li class="contact-form__icon contact-form__group"><span class="contact-form__property">Group: </span><input class="contact-form__field" ng-model="contactCtrl.contact.group" type="text" placeHolder="Contact group (optional)..."></li>
 	</ul>
 	<input ng-hide="book.isEdit" type="submit" value="Add contact" ng-click="contactForm.$valid && book.turnAddContact(); contactForm.$valid && book.selectContact(book.contacts.length)" />
 	<input ng-show="book.isEdit" ng-click="contactForm.$valid && book.turnAddContact();" type="submit" value="Save contact">

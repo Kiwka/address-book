@@ -1,0 +1,57 @@
+[
+	{
+		"name": "John Doe",
+		"phone": "0567893",
+		"email": "johndoe@google.com",
+		"group": "Men",
+		"image": "img/default.png",
+		"number": 0
+	},
+	{
+		"name": "Mary Ann",
+		"phone": "567489",
+		"email": "maryann@google.com",
+		"image": "img/default.png",
+		"number": 1
+	},
+	{
+		"name": "Ann Buy",
+		"phone": "444455",
+		"email": "annbuy@google.com",
+		"group": "Family",
+		"image": "img/default.png",
+		"number": 2
+	},
+	{
+		"name": "Dan Brang",
+		"phone": "43335",
+		"email": "danbrung@google.com",
+		"group": "Family",
+		"image": "img/default.png",
+		"number": 3
+	},
+	{
+		"name": "Dann Brang",
+		"phone": "43335",
+		"email": "danbrung@google.com",
+		"group": "Family",
+		"image": "img/default.png",
+		"number": 4
+	},
+	{
+		"name": "Dannn Brang",
+		"phone": "43335",
+		"email": "danbrung@google.com",
+		"group": "Family",
+		"image": "img/default.png",
+		"number": 5
+	},
+	{
+		"name": "Dannnn Brang",
+		"phone": "43335",
+		"email": "danbrung@google.com",
+		"group": "Familyy",
+		"image": "img/default.png",
+		"number": 6
+	}
+]
