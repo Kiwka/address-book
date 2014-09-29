@@ -1,7 +1,8 @@
 Address book
 ============
 
-**Task:**
+Task
+-------
 I’m really absent-minded person, who have got a lot of  acquaintances, which I have to keep info about.
 
 Functional requirements:
@@ -17,3 +18,7 @@ Additional requirements(optional)
 * It should have user authentication solution and a user should only have access to their own contacts;
 * It should have automated tests for all functionality.    
 
+Solution
+--------
+
+Preview of the solution: http://kiwka.github.io/address-book/
