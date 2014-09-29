@@ -40,7 +40,7 @@
 		};
 	});
 
-	app.controller('BookController', ['$http', function($http){
+	app.controller('BookController', ['$http', '$timeout', function($http, $timeout){
 		book = this;
 		book.contacts=[];	
 		this.current = 0;
@@ -129,7 +129,11 @@
 			for (var i=0; i<4; i++) {
 				inputs[i].value="";
 			}
-		}
+		};
+
+		$timeout(function() {
+			addContactsListScroll();
+		}, 3000);
 	}]);
 	
 	app.controller('GroupController', function(){
