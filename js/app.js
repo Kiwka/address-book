@@ -120,7 +120,6 @@
 		this.editContact = function() {
 		this.isEdit = true;
 			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Edit Contact</h1>";
-			//var inputs = document.getElementsByClassName('contact-form__field');
 			editedContact.name = this.contacts[this.current].name;
 			editedContact.phone = this.contacts[this.current].phone;
 			editedContact.email = this.contacts[this.current].email;
@@ -131,12 +130,7 @@
 		};
 
 		this.eraseContactInfo = function () {
-			//var inputs = document.getElementsByClassName('contact-form__field');
 			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Add Contact</h1>";
-			//this.isEdit = false;
-			//for (var i=0; i<4; i++) {
-			//	inputs[i].value="";
-			//}
 			editedContact.name="";
 			editedContact.phone="";
 			editedContact.email="";
@@ -145,12 +139,11 @@
 
 		
 		this.changeContact = function() {
-			var inputs = document.getElementsByClassName('contact-form__field');
-			this.contacts[this.current].name = inputs[0].value;
-			this.contacts[this.current].phone = inputs[1].value;
-			this.contacts[this.current].email = inputs[2].value;
-			if (inputs[3].value) {
-				this.contacts[this.current].group = inputs[3].value;
+			this.contacts[this.current].name = editedContact.name;
+			this.contacts[this.current].phone = editedContact.phone;
+			this.contacts[this.current].email = editedContact.email;
+			if (editedContact.group) {
+				this.contacts[this.current].group = editedContact.group;
 			}
 		};
 
