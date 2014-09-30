@@ -131,12 +131,14 @@
 			}
 		};
 
+		//Adding height for the contacts list. Without direct assignment, autoscroll is not working properly
 		$timeout(function() {
-			addContactsListScroll();
+			addContactsListScroll(false);
 		}, 3000);
+
 	}]);
 	
-	app.controller('GroupController', function(){
+	app.controller('GroupController', ['$timeout', function($timeout){
 		this.view = false;
 
 		this.isGroups = function () {
@@ -145,7 +147,14 @@
 
 		this.setGroups = function () {
 			this.view = !this.view;
+			var view = this.view;
+			var height = this.height;
+			$timeout(function() {
+				addContactsListScroll(view);
+			}, 300);
 		}
-	});
+
+
+	}]);
 
 })();
