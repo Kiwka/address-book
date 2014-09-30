@@ -7,5 +7,5 @@
 	</ul>
 	<input ng-hide="book.isEdit" type="submit" value="Add contact" ng-click="contactForm.$valid && book.turnAddContact(); contactForm.$valid && book.selectContact(book.contacts.length)" />
 	<input ng-show="book.isEdit" ng-click="contactForm.$valid && book.turnAddContact();" type="submit" value="Save contact">
-	<button ng-click="book.turnAddContact(); book.eraseContactInfo()">Cancel</button>
+	<button ng-click="book.turnAddContact(); book.eraseContactInfo(); contactForm.$setPristine()">Cancel</button>
 </form>

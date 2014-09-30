@@ -135,6 +135,7 @@
 			editedContact.phone="";
 			editedContact.email="";
 			editedContact.group="";
+			this.isEdit = false;
 		}
 
 		

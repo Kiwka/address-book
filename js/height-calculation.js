@@ -25,10 +25,10 @@ var addContactsListScroll = function(isGroupsView) {
 	if (isGroupsView) {
 		contactsScrollHeight -= groupsList.getElementHeight();
 	};
-	if (contactsList.getElementHeight()>contactsScrollHeight) {
+	//if (contactsList.getElementHeight()>contactsScrollHeight) {
 		document.getElementsByClassName('panel__contacts')[0].style.height=contactsScrollHeight+"px";
-	};
-	if (!isGroupsView) {
-		document.getElementsByClassName('panel__contacts')[0].style.height=contactsScrollHeight+"px";
-	}
+	//};
+	//if (!isGroupsView) {
+	//	document.getElementsByClassName('panel__contacts')[0].style.height=contactsScrollHeight+"px";
+	//}
 };
