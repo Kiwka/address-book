@@ -1,6 +1,6 @@
 (function () {
 	var app = angular.module ('book', ['ui.directives','ui.filters']);
-	var book;
+	var book, editedContact;
 
 	app.directive('contactsList', function () {
 		return {
@@ -22,6 +22,7 @@
 			templateUrl: 'tmp/contact-form.html',
 			controller: function () {
 				this.contact = {};
+				editedContact = this.contact;
 				this.changeContactsListHeight = function () {
 					if(!(document.getElementsByClassName('panel__groups ng-hide')[0])) {
 						$timeout(function () {
@@ -48,7 +49,7 @@
 		};
 	});
 
-	app.controller('BookController', ['$http', '$timeout', function($http, $timeout){
+	app.controller('BookController', ['$http', '$timeout', '$scope', function($http, $timeout, $scope){
 		book = this;
 		book.contacts=[];	
 		this.current = 0;
@@ -115,28 +116,34 @@
 			this.isAddContact = !this.isAddContact;
 		};
 
-		this.eraseContactInfo = function () {
-			var inputs = document.getElementsByClassName('contact-form__field');
-			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Add Contact</h1>";
-			this.isEdit = false;
-			for (var i=0; i<4; i++) {
-				inputs[i].value="";
-			}
-		}
-
 		this.isEdit = false;
 		this.editContact = function() {
-			this.isEdit = true;
+		this.isEdit = true;
 			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Edit Contact</h1>";
-			var inputs = document.getElementsByClassName('contact-form__field');
-			inputs[0].value = this.contacts[this.current].name;
-			inputs[1].value = this.contacts[this.current].phone;
-			inputs[2].value = this.contacts[this.current].email;
-			if (!((this.contacts[this.current].group)===undefined)) {
-				inputs[3].value = this.contacts[this.current].group;
-			}
+			//var inputs = document.getElementsByClassName('contact-form__field');
+			editedContact.name = this.contacts[this.current].name;
+			editedContact.phone = this.contacts[this.current].phone;
+			editedContact.email = this.contacts[this.current].email;
+				if (!((this.contacts[this.current].group)===undefined)) {
+					editedContact.group = this.contacts[this.current].group;
+			};
+			$scope.contactForm.$setDirty();
 		};
 
+		this.eraseContactInfo = function () {
+			//var inputs = document.getElementsByClassName('contact-form__field');
+			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Add Contact</h1>";
+			//this.isEdit = false;
+			//for (var i=0; i<4; i++) {
+			//	inputs[i].value="";
+			//}
+			editedContact.name="";
+			editedContact.phone="";
+			editedContact.email="";
+			editedContact.group="";
+		}
+
+		
 		this.changeContact = function() {
 			var inputs = document.getElementsByClassName('contact-form__field');
 			this.contacts[this.current].name = inputs[0].value;
