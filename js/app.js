@@ -151,7 +151,7 @@
 		//Adding height for the contacts list. Without direct assignment, autoscroll is not working properly
 		$timeout(function() {
 			addContactsListScroll(false);
-		}, 100);
+		}, 300);
 
 	}]);
 	
@@ -168,7 +168,6 @@
 			var height = this.height;
 			$timeout( function () {
 				addContactsListScroll(view);
-
 			}, 100);
 		}
 
