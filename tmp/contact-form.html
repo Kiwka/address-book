@@ -1,4 +1,4 @@
-<form name="contactForm" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact(); contactForm.$valid && !book.isEdit && contactForm.$setPristine()" novalidate>
+<form name="contactForm" ng-submit="contactForm.$valid && !book.isEdit && contactCtrl.addContact(); contactForm.$valid && book.isEdit && book.changeContact(); contactForm.$valid && !book.isEdit && contactForm.$setPristine(); contactForm.$valid && book.isEdit && book.eraseContactInfo();" novalidate>
 	<ul class="contact-form__fields">
 		<li class="contact-form__icon contact-form__name"><span class="contact-form__property">Name: </span><input class="contact-form__field" ng-model="contactCtrl.contact.name" type="text" placeHolder="Name..." required></li>
 		<li class="contact-form__icon contact-form__phone"><span class="contact-form__property">Phone: </span><input class="contact-form__field" ng-model="contactCtrl.contact.phone" type="tel" placeHolder="Phone numder..." required></li>
@@ -7,5 +7,5 @@
 	</ul>
 	<input ng-hide="book.isEdit" type="submit" value="Add contact" ng-click="contactForm.$valid && book.turnAddContact(); contactForm.$valid && book.selectContact(book.contacts.length)" />
 	<input ng-show="book.isEdit" ng-click="contactForm.$valid && book.turnAddContact();" type="submit" value="Save contact">
-	<button ng-click="book.turnAddContact()">Cancel</button>
+	<button ng-click="book.turnAddContact(); book.eraseContactInfo()">Cancel</button>
 </form>

@@ -113,6 +113,15 @@
 		this.isAddContact = false;
 		this.turnAddContact = function (){
 			this.isAddContact = !this.isAddContact;
+		};
+
+		this.eraseContactInfo = function () {
+			var inputs = document.getElementsByClassName('contact-form__field');
+			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Add Contact</h1>";
+			this.isEdit = false;
+			for (var i=0; i<4; i++) {
+				inputs[i].value="";
+			}
 		}
 
 		this.isEdit = false;
@@ -121,10 +130,9 @@
 			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Edit Contact</h1>";
 			var inputs = document.getElementsByClassName('contact-form__field');
 			inputs[0].value = this.contacts[this.current].name;
-			inputs[0].focus();
 			inputs[1].value = this.contacts[this.current].phone;
 			inputs[2].value = this.contacts[this.current].email;
-			if (!((typeof this.contacts[this.current].group)==="undefined")) {
+			if (!((this.contacts[this.current].group)===undefined)) {
 				inputs[3].value = this.contacts[this.current].group;
 			}
 		};
@@ -136,11 +144,6 @@
 			this.contacts[this.current].email = inputs[2].value;
 			if (inputs[3].value) {
 				this.contacts[this.current].group = inputs[3].value;
-			}
-			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Add Contact</h1>";
-			this.isEdit = false;
-			for (var i=0; i<4; i++) {
-				inputs[i].value="";
 			}
 		};
 
