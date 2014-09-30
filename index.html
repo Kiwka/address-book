@@ -8,7 +8,7 @@
 <body ng-controller="BookController as book">
 	<aside class="panel">
 		<form>
-			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..." ng-keyup="book.changeContactsSet()"/>
+			<input class="panel__search" ng-model="searchText" type="text" placeHolder="Start typing name..." ng-keydown="book.changeContactsSet()"/>
 		</form>
 		<section ng-controller="GroupController as groups">
 			<header class="panel__header" ng-click="groups.setGroups(); book.noGroup()">Groups</header>

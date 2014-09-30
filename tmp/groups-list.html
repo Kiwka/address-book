@@ -1,4 +1,4 @@
 <ul class="panel__groups" ng-show="groups.isGroups() ">
 	<li class="panel__group" ng-click="book.noGroup()" ng-class="{panel__active: book.isGroupSelected('')}">All contacts</li>
-	<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)" ng-click="book.setGroup(contact)" ng-class="{panel__active: book.isGroupSelected(contact.group)}">{{contact.group}}</li>
+	<li class="panel__group" ng-repeat="contact in book.contacts | unique: 'group'" ng-show="book.isGroupinContact(contact)" ng-click="book.setGroup(contact); book.changeContactsSet()" ng-class="{panel__active: book.isGroupSelected(contact.group)}">{{contact.group}}</li>
 </ul>

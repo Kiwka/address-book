@@ -84,9 +84,13 @@
 		};
 
 		this.changeContactsSet = function () {
-			if (this.filteredContacts[0]) {
-				this.current = this.filteredContacts[0].number;
-			}
+			var book = this;
+			$timeout (function () {
+				console.log(book.filteredContacts[0]);
+				if (book.filteredContacts[0]) { //help to prevent errors when there are no contacts in list
+					book.current = book.filteredContacts[0].number;
+				}
+			}, 100);
 		}
 		
 		this.removeContact = function () {
@@ -117,6 +121,7 @@
 			document.getElementsByClassName('contact-form__header')[0].innerHTML="<h1>Edit Contact</h1>";
 			var inputs = document.getElementsByClassName('contact-form__field');
 			inputs[0].value = this.contacts[this.current].name;
+			inputs[0].focus();
 			inputs[1].value = this.contacts[this.current].phone;
 			inputs[2].value = this.contacts[this.current].email;
 			if (!((typeof this.contacts[this.current].group)==="undefined")) {
@@ -142,7 +147,7 @@
 		//Adding height for the contacts list. Without direct assignment, autoscroll is not working properly
 		$timeout(function() {
 			addContactsListScroll(false);
-		}, 300);
+		}, 100);
 
 	}]);
 	
@@ -159,7 +164,8 @@
 			var height = this.height;
 			$timeout( function () {
 				addContactsListScroll(view);
-			}, 300);
+
+			}, 100);
 		}
 
 
