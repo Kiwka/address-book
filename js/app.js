@@ -16,22 +16,30 @@
 		};
 	});
 
-	app.directive('contactForm', function () {
+	app.directive('contactForm', ['$timeout', function ($timeout) {
 		return {
 			restrict: 'E',
 			templateUrl: 'tmp/contact-form.html',
 			controller: function () {
 				this.contact = {};
+				this.changeContactsListHeight = function () {
+					if(!(document.getElementsByClassName('panel__groups ng-hide')[0])) {
+						$timeout(function () {
+							addContactsListScroll(true)}
+						, 300);
+					}
+				};
 				this.addContact = function () {
 					this.contact.image = 'img/default.png';
 					this.contact.number=book.contacts.length;
 					book.contacts.push(this.contact);
 					this.contact = {};
+					this.changeContactsListHeight();
 				};
 			},
 			controllerAs: 'contactCtrl'
 		};
-	});
+	}]);
 	
 	app.directive('contactView', function () {
 		return {
@@ -134,7 +142,7 @@
 		//Adding height for the contacts list. Without direct assignment, autoscroll is not working properly
 		$timeout(function() {
 			addContactsListScroll(false);
-		}, 3000);
+		}, 300);
 
 	}]);
 	
@@ -149,7 +157,7 @@
 			this.view = !this.view;
 			var view = this.view;
 			var height = this.height;
-			$timeout(function() {
+			$timeout( function () {
 				addContactsListScroll(view);
 			}, 300);
 		}
