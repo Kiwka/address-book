@@ -41,7 +41,7 @@
 			controllerAs: 'contactCtrl'
 		};
 	}]);
-	
+
 	app.directive('contactView', function () {
 		return {
 			restrict: 'E',
@@ -51,7 +51,7 @@
 
 	app.controller('BookController', ['$http', '$timeout', '$scope', function($http, $timeout, $scope){
 		book = this;
-		book.contacts=[];	
+		book.contacts=[];
 		this.current = 0;
 		this.selectedGroup = "";
 		$http.get('contacts/contacts.json').success(function (data) {
@@ -63,7 +63,7 @@
 		this.isGroupinContact = function (contact) {
 			return !!contact.group;
 		}
-		
+
 		this.setGroup = function (contact) {
 			this.selectedGroup = contact.group;
 		}
@@ -79,7 +79,7 @@
 		this.selectContact = function (setContact) {
 			this.current = setContact;
 		};
-		
+
 		this.isSelected = function (checkContact) {
 			return this.current === checkContact;
 		};
@@ -87,13 +87,12 @@
 		this.changeContactsSet = function () {
 			var book = this;
 			$timeout (function () {
-				console.log(book.filteredContacts[0]);
 				if (book.filteredContacts[0]) { //help to prevent errors when there are no contacts in list
 					book.current = book.filteredContacts[0].number;
 				}
 			}, 100);
 		}
-		
+
 		this.removeContact = function () {
 			var current = this.current;
 			var length = this.contacts.length;
@@ -110,7 +109,7 @@
 			book.contacts.splice(index,1);
 			this.selectContact(book.contacts[0].number);
 		};
-		
+
 		this.isAddContact = false;
 		this.turnAddContact = function (){
 			this.isAddContact = !this.isAddContact;
@@ -138,13 +137,14 @@
 			this.isEdit = false;
 		}
 
-		
+
 		this.changeContact = function() {
 			this.contacts[this.current].name = editedContact.name;
 			this.contacts[this.current].phone = editedContact.phone;
 			this.contacts[this.current].email = editedContact.email;
 			if (editedContact.group) {
 				this.contacts[this.current].group = editedContact.group;
+				this.selectedGroup = editedContact.group;
 			}
 		};
 
@@ -154,13 +154,13 @@
 		}, 300);
 
 	}]);
-	
+
 	app.controller('GroupController', ['$timeout', function($timeout){
 		this.view = false;
 
 		this.isGroups = function () {
 			return this.view;
-		}; 
+		};
 
 		this.setGroups = function () {
 			this.view = !this.view;
